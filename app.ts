@@ -5,13 +5,25 @@ const buttonElement = document.querySelector('button');
 const numRes: number[] = [];
 const stringRes: string[] = [];
 
-function add(num1: number | string, num2: number | string) {
+type numOrString = number | string;
+
+type typeObj = {
+   val: number; 
+   timestamp: Date
+};
+
+interface interfaceObj {
+   val: number;
+   timestamp: Date
+}
+
+function add(num1: numOrString, num2: numOrString) {
    if(typeof num1 === 'string' && typeof num2 === 'string')
       return num1 + ' ' + num2;
    return +num1 + +num2;
 }
 
-function printResult(obj: {val: number; timestamp: Date}) {
+function printResult(obj: typeObj) {
    console.log(obj.val);
    console.log(obj.timestamp);
 }
