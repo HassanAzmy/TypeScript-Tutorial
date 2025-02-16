@@ -1,10 +1,16 @@
 var num1Element = document.getElementById('num1');
 var num2Element = document.getElementById('num2');
 var buttonElement = document.querySelector('button');
+var numRes = [];
+var stringRes = [];
 function add(num1, num2) {
     if (typeof num1 === 'string' && typeof num2 === 'string')
         return num1 + ' ' + num2;
     return +num1 + +num2;
+}
+function printResult(obj) {
+    console.log(obj.val);
+    console.log(obj.timestamp);
 }
 buttonElement === null || buttonElement === void 0 ? void 0 : buttonElement.addEventListener('click', function () {
     //* .value return a string by default
@@ -12,6 +18,8 @@ buttonElement === null || buttonElement === void 0 ? void 0 : buttonElement.addE
     var num2 = num2Element.value;
     var result = add(+num1, num2);
     var stringResult = add(num1, num2);
-    console.log(result);
-    console.log(stringResult);
+    numRes.push(result);
+    stringRes.push(stringResult);
+    printResult({ val: result, timestamp: new Date() });
+    console.log(numRes, stringRes);
 });
