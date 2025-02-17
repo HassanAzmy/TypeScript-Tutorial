@@ -1,25 +1,17 @@
-var num1Element = document.getElementById('num1');
-var num2Element = document.getElementById('num2');
-var buttonElement = document.querySelector('button');
-var numRes = [];
-var stringRes = [];
-function add(num1, num2) {
-    if (typeof num1 === 'string' && typeof num2 === 'string')
-        return num1 + ' ' + num2;
-    return +num1 + +num2;
-}
-function printResult(obj) {
-    console.log(obj.val);
-    console.log(obj.timestamp);
-}
-buttonElement === null || buttonElement === void 0 ? void 0 : buttonElement.addEventListener('click', function () {
-    //* .value return a string by default
-    var num1 = num1Element.value;
-    var num2 = num2Element.value;
-    var result = add(+num1, num2);
-    var stringResult = add(num1, num2);
-    numRes.push(result);
-    stringRes.push(stringResult);
-    printResult({ val: result, timestamp: new Date() });
-    console.log(numRes, stringRes);
+"use strict";
+const arr = [1, 2];
+const myPromise = new Promise((resolve, reject) => {
+    resolve('it worked');
+})
+    .then((res) => {
+    // console.log(res.split('w'));
 });
+const returnValue = function (val) {
+    return val;
+};
+console.log(returnValue('Hello'));
+console.log(returnValue(21));
+const returnTwoValues = function (val1, val2) {
+    console.log(val1, val2);
+};
+returnTwoValues('Hello', { name: 'hassan', age: 21 });

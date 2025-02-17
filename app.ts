@@ -1,43 +1,23 @@
-const num1Element = document.getElementById('num1') as HTMLInputElement;
-const num2Element = document.getElementById('num2') as HTMLInputElement;
-const buttonElement = document.querySelector('button');
+//* Array with generic
+const arr:Array<number> = [1, 2];
 
-const numRes: number[] = [];
-const stringRes: string[] = [];
-
-type numOrString = number | string;
-
-type typeObj = {
-   val: number; 
-   timestamp: Date
-};
-
-interface interfaceObj {
-   val: number;
-   timestamp: Date
-}
-
-function add(num1: numOrString, num2: numOrString) {
-   if(typeof num1 === 'string' && typeof num2 === 'string')
-      return num1 + ' ' + num2;
-   return +num1 + +num2;
-}
-
-function printResult(obj: typeObj) {
-   console.log(obj.val);
-   console.log(obj.timestamp);
-}
-
-buttonElement?.addEventListener('click', () => {
-   //* .value return a string by default
-   const num1 = num1Element.value;
-   const num2 = num2Element.value;
-
-   const result = add(+num1, num2);
-   const stringResult = add(num1, num2);
-   
-   numRes.push(result as number);
-   stringRes.push(stringResult as string);
-   printResult({val: result as number, timestamp: new Date()});
-   console.log(numRes, stringRes);
+//* Promise with generic
+const myPromise = new Promise<string>((resolve, reject) => {
+   resolve('it worked');
 })
+.then((res) => {
+   console.log(res.split('w'));
+})
+
+//* Custom Generic
+const returnValue = function<T>(val: T): void {
+   console.log(val);
+}
+returnValue<string>('Hello');
+returnValue<number>(21);
+
+//* Multiple generics
+const returnTwoValues = function<T1, T2>(val1: T1, val2: T2): void {
+   console.log(val1, val2);
+}
+returnTwoValues<string, {}>('Hello', {name: 'hassan', age: 21});
